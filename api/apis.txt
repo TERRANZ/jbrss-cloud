@@ -1,0 +1,5 @@
+/feed => post(feed),get(feed[]) => /{feedId} => put(feed),get(feed),del => /posts => get(post[])
+/event => post => /{eid} => get
+
+feed: id,name,url,lastUpdate,post[],updateInterval
+post: id,feedId,postDate,title,link,text

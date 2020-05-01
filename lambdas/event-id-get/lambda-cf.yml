@@ -1,0 +1,19 @@
+  eventIdGet:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs10.x
+      FunctionName: !Sub "event-id-get"
+      CodeUri: ./lambdas/event-id-get/src
+      Description: ''
+      Role: !GetAtt dynDBRole.Arn
+      Timeout: 300
+      Layers:
+        - !Ref shared
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /event/{eid}
+            Method: get
+

@@ -1,0 +1,18 @@
+  feedIdDel:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs10.x
+      FunctionName: !Sub "feed-id-del"
+      CodeUri: ./lambdas/feed-id-del/src
+      Description: ''
+      Role: !GetAtt dynDBRole.Arn
+      Timeout: 300
+      Layers:
+        - !Ref shared
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /feed/{id}
+            Method: delete

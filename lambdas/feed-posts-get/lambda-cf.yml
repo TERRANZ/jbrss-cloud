@@ -1,0 +1,19 @@
+  feedPostsGet:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs10.x
+      FunctionName: !Sub "feed-posts-get"
+      CodeUri: ./lambdas/feed-posts-get/src
+      Description: ''
+      Role: !GetAtt dynDBRole.Arn
+      Timeout: 300
+      Layers:
+        - !Ref shared
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /posts/{fid}
+            Method: get
+

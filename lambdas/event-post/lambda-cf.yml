@@ -1,0 +1,18 @@
+  eventPost:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs10.x
+      FunctionName: !Sub "event-post"
+      CodeUri: ./lambdas/event-post/src
+      Description: ''
+      Role: !GetAtt dynDBRole.Arn
+      Timeout: 300
+      Layers:
+        - !Ref shared
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /event
+            Method: post

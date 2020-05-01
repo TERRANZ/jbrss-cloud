@@ -1,0 +1,9 @@
+  shared:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: shared
+      Description: shared
+      ContentUri: ./layers/shared
+      CompatibleRuntimes:
+        - nodejs10.x
+      RetentionPolicy: Delete
