@@ -1,14 +1,8 @@
 const Sequelize = require('sequelize');
-var sequelize;
-
-if (typeof sequelize === 'undefined') {
-  sequelize = new Sequelize('vkaws', 'vkaws', 'vkaws', {
-    host: 'database-1.cleizeq2t4dd.us-east-1.rds.amazonaws.com',
-    dialect: 'mysql'
-  });
-  sequelize.sync();
-}
-
+const sequelize = new Sequelize('vkaws', 'vkaws', 'vkaws', {
+  host: '46.36.222.173',
+  dialect: 'mysql'
+});
 const Feed = sequelize.define('feed', {
   uid: Sequelize.STRING,
   feedName: Sequelize.STRING,
